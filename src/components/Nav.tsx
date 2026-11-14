@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { restaurante } from "@/config/restaurante";
-import { whatsappLink } from "@/lib/restaurante";
+import { MENSAGEM_MARMITA, whatsappLink } from "@/lib/restaurante";
+import { IconeWhatsApp } from "./IconeWhatsApp";
 import { useForaDaHero } from "./useForaDaHero";
 
 /** Transparente sobre a hero; sólida com blur depois que ela sai da tela. */
@@ -36,6 +37,16 @@ export function Nav() {
             </a>
           </li>
         </ul>
+        <a
+          id="pedir-menu"
+          href={whatsappLink(MENSAGEM_MARMITA)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-menu min-[821px]:hidden"
+        >
+          <IconeWhatsApp className="size-4" />
+          Pedir
+        </a>
       </nav>
     </header>
   );

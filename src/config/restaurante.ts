@@ -7,6 +7,7 @@ export const restaurante = {
     rua: "R. Mariano Soares",
     bairro: "Corveta",
     local: "Condomínio Industrial BHW",
+    localCurto: "Condomínio BHW",
     referencia: "BR-101, saída km 59",
     cidade: "Araquari",
     uf: "SC",
