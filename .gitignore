@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+.impeccable/review
+.impeccable/mocks
+.impeccable/questions
+lighthouse/*.json
+# hooks locais do impeccable (caminhos absolutos desta máquina)
+.cursor/
+.gemini/
+.codex/
+.impeccable/hook.cache.json
+.impeccable/config.local.json
