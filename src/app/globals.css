@@ -191,13 +191,15 @@
 
   .link { text-decoration: underline; text-decoration-color: var(--color-line); text-underline-offset: 4px; transition: text-decoration-color 0.2s ease; }
 
-  /* Buffet em tela cheia: escuro só no canto do texto, a foto fica com o resto do quadro. */
+  /* Buffet em tela cheia: a foto cobre a seção inteira; o escuro é uma sombra localizada,
+     do tamanho do bloco de texto, como a sombra da palavra no vídeo da hero. */
   .buffet-foto { object-position: 58% 60%; }
-  .buffet-scrim {
-    background:
-      radial-gradient(ellipse 70% 75% at 0% 100%, rgb(10 11 9 / 0.9) 0%, rgb(10 11 9 / 0.72) 38%, rgb(10 11 9 / 0) 74%),
-      linear-gradient(to top, rgb(10 11 9 / 0.5), rgb(10 11 9 / 0) 40%),
-      linear-gradient(to bottom, rgb(10 11 9 / 0.45), rgb(10 11 9 / 0) 22%);
+  .buffet-sombra {
+    position: absolute;
+    z-index: -1;
+    inset: -42% -30% -36% -24%; /* relativo ao bloco de texto, que tem a largura do título */
+    pointer-events: none;
+    background: radial-gradient(closest-side, rgb(10 11 9 / 0.88) 0%, rgb(10 11 9 / 0.8) 50%, rgb(10 11 9 / 0.38) 78%, rgb(10 11 9 / 0) 100%);
   }
   .buffet-palco::after {
     content: "";
@@ -211,11 +213,7 @@
   }
   @media (max-aspect-ratio: 1/1) {
     .buffet-foto { object-position: 28% 74%; }
-    .buffet-scrim {
-      background:
-        linear-gradient(to top, rgb(10 11 9 / 0.94) 0%, rgb(10 11 9 / 0.78) 34%, rgb(10 11 9 / 0.3) 56%, rgb(10 11 9 / 0) 70%),
-        linear-gradient(to bottom, rgb(10 11 9 / 0.5), rgb(10 11 9 / 0) 18%);
-    }
+    .buffet-sombra { inset: -40% -20% -30% -20%; }
   }
   /* A câmera respira ao entrar, como o push-in da hero. */
   @supports (animation-timeline: view()) {

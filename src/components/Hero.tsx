@@ -34,7 +34,7 @@ export function Hero() {
         <address className="hidden border-l border-line pl-5 text-right text-[13px] not-italic leading-[1.7] text-muted min-[821px]:block">
           <b className="font-medium text-cream">{endereco.local}</b>
           <br />
-          {endereco.via}
+          {endereco.referencia}
           <br />
           Almoço · {horarioTexto}
         </address>

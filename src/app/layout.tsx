@@ -5,7 +5,7 @@ import { geist, instrumentSerif } from "./fonts";
 import "./globals.css";
 
 const titulo = "Araquari Refeições · Buffet e marmitas no Condomínio BHW";
-const descricao = `Buffet por ${preco(restaurante.precos.buffet)} e marmitas por ${preco(restaurante.precos.marmita)} no ${endereco.local}, ${endereco.via}. Almoço para empresas há ${restaurante.anosDeAtuacao} anos.`;
+const descricao = `Buffet por ${preco(restaurante.precos.buffet)} e marmitas por ${preco(restaurante.precos.marmita)} no ${endereco.local}, ${endereco.referencia}. Almoço para empresas há ${restaurante.anosDeAtuacao} anos.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -35,9 +35,9 @@ const jsonLd = {
   telephone: `+${restaurante.whatsapp}`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: `${endereco.local}, ${endereco.via}`,
-    addressLocality: "Araquari",
-    addressRegion: "SC",
+    streetAddress: endereco.rua,
+    addressLocality: endereco.cidade,
+    addressRegion: endereco.uf,
     addressCountry: "BR",
   },
   openingHoursSpecification: [

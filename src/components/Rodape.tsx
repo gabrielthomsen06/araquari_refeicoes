@@ -28,13 +28,7 @@ export function Rodape() {
           </li>
         </ul>
 
-        <address className="text-[15px] not-italic leading-[1.7] text-muted md:col-span-4">
-          <span className="text-cream">{endereco.local}</span>
-          <br />
-          {endereco.via}
-          <br />
-          {endereco.cidade}
-        </address>
+        <address className="max-w-[40ch] text-[15px] not-italic leading-[1.7] text-muted md:col-span-4">{endereco.completo}</address>
       </div>
 
       <div className="mx-auto mt-14 flex max-w-[1328px] flex-col gap-3 border-t border-hair pt-6 text-[13px] text-muted md:flex-row md:justify-between">

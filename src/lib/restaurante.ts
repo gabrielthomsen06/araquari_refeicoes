@@ -28,12 +28,13 @@ export function diasTexto(dias: number[] = r.diasAbertos) {
 
 export const diasSchema = r.diasAbertos.map((d) => DIAS_SCHEMA[d]);
 
-/** Endereço em partes: "Condomínio Industrial BHW" / "BR-101, saída km 59" / "Araquari (SC)". */
-const partes = r.endereco.split(", ");
+/** Endereço do config mais as formas de exibição. */
+const e = r.endereco;
 export const endereco = {
-  local: partes[0],
-  via: partes.slice(1, -1).join(", "),
-  cidade: partes[partes.length - 1],
+  ...e,
+  cidadeUf: `${e.cidade} (${e.uf})`,
+  /** "R. Mariano Soares, Corveta · Condomínio Industrial BHW (BR-101, saída km 59), Araquari (SC)" */
+  completo: `${e.rua}, ${e.bairro} · ${e.local} (${e.referencia}), ${e.cidade} (${e.uf})`,
 };
 
 export function whatsappLink(mensagem?: string) {

@@ -23,18 +23,20 @@ export function Buffet() {
               className="buffet-foto absolute inset-0 -z-20 size-full object-cover"
             />
           </picture>
-          <div aria-hidden="true" className="buffet-scrim absolute inset-0 -z-10" />
 
           <div className="absolute inset-x-[var(--pad)] bottom-[clamp(32px,7vh,72px)] mx-auto max-w-[1328px]" data-reveal>
-            <h2
-              id="buffet-titulo"
-              className="font-serif text-[clamp(56px,7.6vw,108px)] leading-[0.95] tracking-[-0.02em] tabular-nums"
-            >
-              Buffet por {preco(restaurante.precos.buffet)}.
-            </h2>
-            <p className="mt-5 max-w-[34ch] text-lg leading-[1.55] text-cream/85">
-              Preço fixo, das {horarioTexto}. O salão é amplo e tem estacionamento na frente.
-            </p>
+            <div className="relative w-fit">
+              <div aria-hidden="true" className="buffet-sombra" />
+              <h2
+                id="buffet-titulo"
+                className="font-serif text-[clamp(56px,7.6vw,108px)] leading-[0.95] tracking-[-0.02em] tabular-nums"
+              >
+                Buffet por {preco(restaurante.precos.buffet)}.
+              </h2>
+              <p className="mt-5 max-w-[34ch] text-lg leading-[1.55] text-cream">
+                Preço fixo, das {horarioTexto}. O salão é amplo e tem estacionamento na frente.
+              </p>
+            </div>
           </div>
         </div>
       </section>

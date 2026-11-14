@@ -7,17 +7,10 @@ const mapaSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapaBusca)}&
 
 export function ComoChegar() {
   return (
-    <Secao id="como-chegar" titulo={`${endereco.via}.`}>
+    <Secao id="como-chegar" titulo={`${endereco.referencia}.`}>
       <div className="mx-auto mt-12 grid max-w-[1328px] gap-y-10 md:mt-16 md:grid-cols-12 md:gap-x-8">
         <div className="md:col-span-4" data-reveal>
-          <address className="not-italic">
-            <p className="font-serif text-[30px] leading-[1.1]">{endereco.local}</p>
-            <p className="mt-2 text-lg leading-[1.55] text-muted">
-              {endereco.via}
-              <br />
-              {endereco.cidade}
-            </p>
-          </address>
+          <address className="max-w-[36ch] text-lg not-italic leading-[1.55]">{endereco.completo}</address>
 
           <dl className="mt-8 border-t border-hair pt-5 text-[15px]">
             <dt className="rotulo">Horário</dt>

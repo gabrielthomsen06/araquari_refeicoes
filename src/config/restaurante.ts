@@ -3,7 +3,14 @@ export const restaurante = {
   whatsapp: "5547992616566", // CONFIRMAR com o cliente
   instagram: "https://www.instagram.com/araquari_refeicoes/",
   mapsUrl: "https://maps.app.goo.gl/6QjDuyz7hC5rSqkV8",
-  endereco: "Condomínio Industrial BHW, BR-101, saída km 59, Araquari (SC)",
+  endereco: {
+    rua: "R. Mariano Soares",
+    bairro: "Corveta",
+    local: "Condomínio Industrial BHW",
+    referencia: "BR-101, saída km 59",
+    cidade: "Araquari",
+    uf: "SC",
+  },
   horario: { abre: "11:00", fecha: "13:30", fuso: "America/Sao_Paulo" },
   diasAbertos: [1, 2, 3, 4, 5], // CONFIRMAR com o cliente (0 = domingo)
   precos: { buffet: 23, marmita: 20 },

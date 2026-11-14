@@ -18,7 +18,7 @@ export function Empresas() {
     >
       <div className="mx-auto mt-12 grid max-w-[1328px] gap-y-12 md:mt-16 md:grid-cols-12 md:gap-x-8">
         <figure className="md:col-span-5" data-reveal>
-          <div className="foto aspect-[4/5]">
+          <div className="foto aspect-[4/3] min-[821px]:aspect-[4/5]">
             <Image
               src="/fotos/salao-1086.webp"
               alt="O salão da Araquari Refeições, com mesas de madeira e janelas amplas para a mata"
