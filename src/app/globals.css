@@ -10,6 +10,8 @@
   --color-hair: rgb(242 237 228 / 0.14);
   --color-accent-text: #e7dccb;
   --color-green: #66902c;
+  /* Verde-escuro derivado do logo: superfície (Para empresas, menu sólido). */
+  --color-verde-escuro: #1f2a14;
   --color-erro: #e0a27a;
 
   --font-serif: var(--font-instrument), "Times New Roman", serif;
@@ -102,9 +104,12 @@
   .btn:active { transform: translateY(1px); }
   .btn-primario { background: var(--color-cream); color: var(--color-ink); border-color: var(--color-cream); }
   .btn-primario > span { color: #5b5e55; }
+  /* Sobre o verde #66902C: botão em tinta escura. */
+  .btn-escuro { background: var(--color-ink); color: var(--color-cream); border-color: var(--color-ink); }
   @media (hover: hover) and (pointer: fine) {
     .btn:hover { border-color: var(--color-cream); }
     .btn-primario:hover { background: #fff; }
+    .btn-escuro:hover { background: var(--color-deep); border-color: var(--color-deep); }
     .campo:hover, .opcao:hover { border-color: rgb(242 237 228 / 0.6); }
     .link:hover { text-decoration-color: var(--color-cream); }
   }
@@ -142,7 +147,7 @@
     width: 100%;
     height: 48px;
     padding: 0 14px;
-    background: var(--color-ink);
+    background: rgb(10 11 9 / 0.24);
     border: 1px solid var(--color-line);
     border-radius: 2px;
     color: var(--color-cream);

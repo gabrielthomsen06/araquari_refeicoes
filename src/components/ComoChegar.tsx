@@ -56,7 +56,6 @@ export function ComoChegar() {
                 className="object-[50%_70%]"
               />
             </div>
-            <figcaption className="mt-3 text-[13px] text-muted">Estacionamento na frente.</figcaption>
           </figure>
         </div>
       </div>

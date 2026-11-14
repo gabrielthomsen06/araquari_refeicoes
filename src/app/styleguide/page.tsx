@@ -12,7 +12,8 @@ const cores = [
   { nome: "Secundário", valor: "#F2EDE4 · 68%", classe: "bg-muted", uso: "parágrafos, rótulos, nav (7,8:1)" },
   { nome: "Linha", valor: "#F2EDE4 · 38%", classe: "bg-line", uso: "bordas de botão e campo" },
   { nome: "Itálico", valor: "#E7DCCB", classe: "bg-accent-text", uso: "palavra em itálico dos títulos" },
-  { nome: "Destaque", valor: "#66902C", classe: "bg-green", uso: "selo, ponto de status, foco" },
+  { nome: "Verde", valor: "#66902C", classe: "bg-green", uso: "faixa da marmita, selo, foco" },
+  { nome: "Verde-escuro", valor: "#1F2A14", classe: "bg-verde-escuro", uso: "Para empresas, menu sólido" },
 ];
 
 function Bloco({ titulo, children }: { titulo: string; children: React.ReactNode }) {
@@ -43,9 +44,9 @@ export default function Styleguide() {
       </header>
 
       <Bloco titulo="Cores">
-        <ul className="grid grid-cols-2 gap-px border border-hair bg-hair sm:grid-cols-4 lg:grid-cols-7">
+        <ul className="grid grid-cols-2 gap-px border border-hair bg-hair sm:grid-cols-4 lg:grid-cols-8">
           {cores.map((c) => (
-            <li key={c.nome} className="bg-ink last:col-span-2 sm:last:col-span-1">
+            <li key={c.nome} className="bg-ink">
               <div className={`h-20 border-b border-hair ${c.classe}`} />
               <div className="p-3">
                 <p className="text-sm font-medium">{c.nome}</p>
@@ -56,7 +57,7 @@ export default function Styleguide() {
           ))}
         </ul>
         <p className="mt-4 max-w-[60ch] text-sm text-muted">
-          O verde nunca ocupa bloco grande: só o ponto do selo, o anel dele e o foco de campo.
+          Verde como superfície (Para empresas, faixa da marmita, menu sólido), nunca sobre a comida nem sobre o vídeo.
         </p>
       </Bloco>
 

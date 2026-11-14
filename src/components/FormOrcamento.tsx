@@ -119,7 +119,7 @@ export function FormOrcamento() {
         <button type="submit" className="btn btn-primario">
           Pedir orçamento
         </button>
-        <p className="text-[13px] text-muted">Abre o WhatsApp com a mensagem pronta. Nada fica salvo aqui.</p>
+        <p className="text-[13px] text-muted">Abre o WhatsApp com a mensagem pronta.</p>
       </div>
     </form>
   );

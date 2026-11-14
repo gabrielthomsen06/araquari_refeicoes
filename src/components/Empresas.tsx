@@ -9,6 +9,7 @@ export function Empresas() {
     <Secao
       id="empresas"
       rotulo="Para empresas"
+      className="bg-verde-escuro"
       titulo={
         <>
           Almoço para a sua equipe, aqui no condomínio.
@@ -27,7 +28,6 @@ export function Empresas() {
               loading="lazy"
             />
           </div>
-          <figcaption className="mt-3 text-[13px] text-muted">O salão, com vista para a mata.</figcaption>
         </figure>
 
         <div className="md:col-span-7 md:pl-[4%]">

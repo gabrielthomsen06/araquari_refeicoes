@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Prato feito com arroz, bife, couve e ovo" }],
   },
   twitter: { card: "summary_large_image", title: titulo, description: descricao, images: ["/og.jpg"] },
-  icons: { icon: "/brand/logo-creme-96.webp" },
+  icons: { icon: "/brand/logo-verde-96.webp" },
 };
 
 export const viewport: Viewport = { themeColor: "#121410", colorScheme: "dark" };
