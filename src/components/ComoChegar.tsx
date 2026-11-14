@@ -7,7 +7,7 @@ const mapaSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapaBusca)}&
 
 export function ComoChegar() {
   return (
-    <Secao id="como-chegar" rotulo="Como chegar" titulo={`${endereco.via}.`}>
+    <Secao id="como-chegar" titulo={`${endereco.via}.`}>
       <div className="mx-auto mt-12 grid max-w-[1328px] gap-y-10 md:mt-16 md:grid-cols-12 md:gap-x-8">
         <div className="md:col-span-4" data-reveal>
           <address className="not-italic">

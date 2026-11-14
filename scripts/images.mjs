@@ -13,8 +13,10 @@ const grade = (img, sat = 0.9) =>
 
 const jobs = [
   { src: "post3-slide1.jpg", name: "buffet-salao", widths: [640, 1086] },
-  // Detalhe das cubas, do mesmo quadro (a foto inteira entra em Para empresas).
-  { src: "post3-slide1.jpg", name: "buffet-cubas", widths: [640, 1086], extract: { left: 0, top: 700, width: 1086, height: 600 } },
+  // Buffet em tela cheia: corte largo (desktop) do mesmo quadro; no celular entra o retrato inteiro.
+  { src: "post3-slide1.jpg", name: "buffet-largo", widths: [1086], extract: { left: 0, top: 470, width: 1086, height: 640 } },
+  // Detalhe das cubas, bem fechado, para não repetir o quadro largo.
+  { src: "post3-slide1.jpg", name: "buffet-cubas", widths: [640], extract: { left: 300, top: 760, width: 640, height: 300 } },
   { src: "post3-slide3.jpg", name: "salao", widths: [640, 1086] },
   // Céu azul forte compete com a paleta quente: saturação menor.
   { src: "post3-slide2.jpg", name: "fachada", widths: [640, 1086], sat: 0.55 },

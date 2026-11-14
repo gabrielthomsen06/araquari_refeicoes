@@ -14,5 +14,5 @@ export const restaurante = {
 // O link acima (mapsUrl) aponta para "BHW Condomínio Logístico, R. Mariano Soares, 255, Corveta". CONFIRMAR com o cliente.
 export const mapaBusca = "Araquari Refeições, Araquari - SC";
 
-// TODO: domínio definitivo (usado no Open Graph, canonical e JSON-LD).
-export const siteUrl = "https://araquarirefeicoes.vercel.app";
+// Usado no Open Graph, canonical e JSON-LD. Trocar quando houver domínio próprio.
+export const siteUrl = "https://araquari-refeicoes.vercel.app";

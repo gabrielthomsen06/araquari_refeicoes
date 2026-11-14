@@ -11,7 +11,7 @@ export function Empresas() {
       rotulo="Para empresas"
       titulo={
         <>
-          Almoço para a sua <em>equipe</em>, aqui no condomínio.
+          Almoço para a sua equipe, aqui no condomínio.
         </>
       }
     >
@@ -19,15 +19,15 @@ export function Empresas() {
         <figure className="md:col-span-5" data-reveal>
           <div className="foto aspect-[4/5]">
             <Image
-              src="/fotos/buffet-salao-1086.webp"
-              alt="O salão da Araquari Refeições, com o balcão do buffet em primeiro plano e as mesas ao fundo"
+              src="/fotos/salao-1086.webp"
+              alt="O salão da Araquari Refeições, com mesas de madeira e janelas amplas para a mata"
               width={1086}
-              height={1448}
+              height={1440}
               sizes="(min-width: 768px) 40vw, 100vw"
               loading="lazy"
             />
           </div>
-          <figcaption className="mt-3 text-[13px] text-muted">O salão, com o buffet na entrada.</figcaption>
+          <figcaption className="mt-3 text-[13px] text-muted">O salão, com vista para a mata.</figcaption>
         </figure>
 
         <div className="md:col-span-7 md:pl-[4%]">

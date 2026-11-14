@@ -69,9 +69,9 @@ export default function Styleguide() {
             </p>
           </div>
           <div>
-            <Nota>H2 · Instrument Serif 400 · 40 → 72 px · uma palavra em itálico</Nota>
+            <Nota>H2 · Instrument Serif 400 · 40 → 72 px · reto (itálico só no H1 e na faixa da marmita)</Nota>
             <p className="titulo max-w-[16ch]">
-              Almoço para a sua equipe, <em>aqui</em> no condomínio.
+              Almoço para a sua equipe, aqui no condomínio.
             </p>
           </div>
           <div>
@@ -157,8 +157,8 @@ export default function Styleguide() {
       </Bloco>
 
       <div className="mt-6 bg-ink">
-        <p className="rotulo px-[var(--pad)] text-center">Bloco de seção (exemplo)</p>
-        <Secao id="exemplo" rotulo="Para empresas" titulo={<>Almoço para a sua equipe, <em>aqui</em> no condomínio.</>}>
+        <p className="rotulo px-[var(--pad)] text-center">Bloco de seção com rótulo (só Para empresas)</p>
+        <Secao id="exemplo" rotulo="Para empresas" titulo="Almoço para a sua equipe, aqui no condomínio.">
           <div className="mx-auto mt-10 grid max-w-[1328px] md:grid-cols-12 md:gap-x-8">
             <div className="md:col-span-9 md:col-start-4">
               <p className="max-w-[56ch] text-lg leading-[1.55] text-muted">
