@@ -14,3 +14,6 @@ lighthouse/*.json
 .impeccable/hook.cache.json
 .impeccable/config.local.json
 .vercel
+
+.vercel
+.env*
