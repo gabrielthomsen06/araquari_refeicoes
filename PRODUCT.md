@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Next.js (App Router) + TypeScript + Tailwind, exportação estática (`output: 'export'`), deploy na Vercel. Sem backend: formulários montam a mensagem e abrem o WhatsApp. Fontes via `next/font`: Instrument Serif e Geist, nenhuma outra.
+Next.js (App Router) + TypeScript + Tailwind, exportação estática (`output: 'export'`), deploy na Vercel. Sem backend: formulários montam a mensagem e abrem o WhatsApp. Fontes via `next/font` (arquivos locais): DM Serif Display nos títulos e Manrope no texto, nenhuma outra.
 
 ## Users
 
@@ -35,13 +35,15 @@ Pedidos e orçamentos acontecem pelo WhatsApp. Funcionamento só no almoço, em 
 ## Brand Commitments
 
 - Nome: Araquari Refeições. Logo em creme: `public/brand/logo-creme.png`.
-- Hero em vídeo "cozinha de cinema" aprovada em 13/11/2026; guia de estilo em `_referencia/araquari_refeicoes_style.md`.
-- Verde `#66902C` medido no traço do logo, usado só como destaque pontual.
+- Site v2 (15/11/2026) refeito a partir de `maquete-site-araquari-v2.html`: creme `#F4EDE1` e papel `#EAE0CF` de fundo, texto `#1F2419`, verde-escuro `#1C2A16`/`#24361C` em faixas, mostarda `#B98A2C` em destaques e botões.
+- Logo original verde dentro de um círculo creme (`public/brand/logo-verde-*.webp`, gerado por `scripts/images.mjs`).
+- Verde `#66902C` do logo só em ícones e no logo.
+- O vídeo da hero foi removido; a hero é uma foto de comida com degradê escuro.
 
 ## Evidence on Hand
 
 - Fotos reais: buffet com salão (`post3-slide1`), salão vazio (`post3-slide3`), fachada com estacionamento (`post3-slide2`), ossobuco na cuba (`post-ossobuco`, 360×640, texto do Instagram gravado na imagem).
-- Fotos/vídeos de banco (Pexels/Unsplash) só na hero; nunca na seção Buffet, para o visitante não confundir com o restaurante.
+- Fotos de banco (Pexels/Unsplash) na hero e, provisoriamente, na galeria do buffet (três fotos com legenda só do nome da comida, sem preço) até chegarem as fotos reais; origem em `_referencia/LICENSES.md`.
 - Ausentes e proibidos de inventar: depoimentos, avaliações, clientes nomeados, números além de "mais de 10 anos".
 
 ## Product Principles
@@ -53,4 +55,4 @@ Pedidos e orçamentos acontecem pelo WhatsApp. Funcionamento só no almoço, em 
 
 ## Accessibility & Inclusion
 
-Contraste AA em todo texto; respeitar `prefers-reduced-motion` (vídeo vira poster, revelações desligadas). Meta Lighthouse mobile 90+ nas quatro categorias.
+Contraste AA em todo texto; respeitar `prefers-reduced-motion` (todas as animações desligadas, tudo visível). Meta Lighthouse mobile 90+ nas quatro categorias.

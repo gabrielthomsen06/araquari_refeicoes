@@ -1,274 +1,206 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #121410;
-  --color-surface: #1a1c17;
-  --color-deep: #0b0c0a;
-  --color-cream: #f2ede4;
-  --color-muted: rgb(242 237 228 / 0.68);
-  --color-line: rgb(242 237 228 / 0.38);
-  --color-hair: rgb(242 237 228 / 0.14);
-  --color-accent-text: #e7dccb;
-  --color-green: #66902c;
-  /* Verde-escuro derivado do logo: superfície (Para empresas, menu sólido). */
-  --color-verde-escuro: #1f2a14;
-  --color-erro: #e0a27a;
+  --color-cream: #f4ede1;
+  --color-paper: #eae0cf;
+  --color-ink: #1f2419;
+  --color-muted: #5e6152;
+  --color-g900: #1c2a16;
+  --color-g800: #24361c;
+  --color-mustard: #b98a2c;
+  --color-mustard-2: #d2a23e;
+  /* Mostarda escurecida para texto pequeno sobre creme (4,6:1). */
+  --color-mustard-ink: #8c6618;
+  --color-brand: #66902c;
+  --color-line: rgb(31 36 25 / 0.14);
+  --color-cream-line: rgb(244 237 225 / 0.16);
+  --color-cream-soft: rgb(244 237 225 / 0.78);
+  --color-erro: #f0b48a;
 
-  --font-serif: var(--font-instrument), "Times New Roman", serif;
-  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-display: var(--font-dm-serif), "Times New Roman", serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
 
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-:root {
-  --pad: clamp(16px, 4vw, 56px);
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
   html {
-    color-scheme: dark;
+    color-scheme: light;
     scroll-behavior: smooth;
-    scroll-padding-top: 72px;
-    background: var(--color-ink);
+    scroll-padding-top: 24px;
+    background: var(--color-cream);
+    accent-color: var(--color-mustard);
   }
   body {
-    background: var(--color-ink);
-    color: var(--color-cream);
+    background: var(--color-cream);
+    color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  html {
-    scrollbar-color: rgb(242 237 228 / 0.28) var(--color-ink);
-    accent-color: var(--color-green);
-  }
-  input, textarea { caret-color: var(--color-green); }
-  ::selection {
-    background: var(--color-green);
-    color: var(--color-cream);
-  }
-  :focus-visible {
-    outline: 2px solid var(--color-cream);
-    outline-offset: 3px;
-  }
+  img { display: block; max-width: 100%; }
   h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
     text-wrap: balance;
   }
-  p {
-    text-wrap: pretty;
-  }
+  h1 em, h2 em { font-style: italic; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-mustard); color: var(--color-ink); }
+  :focus-visible { outline: 2px solid var(--color-mustard); outline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
 }
 
 @layer components {
-  /* Rótulo de seção: Geist 500, 12 px, caixa alta, tracking 0,14em. */
-  .rotulo {
-    font: 500 12px/1.2 var(--font-sans);
-    letter-spacing: 0.14em;
+  .wrap { max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
+
+  /* Rótulo de seção: Manrope 700, 12 px, caixa alta, 0,16em. */
+  .eyebrow {
+    font: 700 12px/1 var(--font-sans);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-muted);
+    color: var(--color-mustard-ink);
   }
-  /* Título de seção: Instrument Serif 400, 40 → 72 px. */
-  .titulo {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(40px, 5.2vw, 72px);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .titulo em {
-    font-style: italic;
-    color: var(--color-accent-text);
+  .sobre-escuro .eyebrow, .eyebrow-claro { color: var(--color-mustard-2); }
+
+  /* H2 de seção: DM Serif Display 32 → 48 px. */
+  .h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.08;
+    margin-top: 12px;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    height: 48px;
-    padding: 0 20px;
-    border: 1px solid var(--color-line);
+    gap: 10px;
+    height: 50px;
+    padding: 0 24px;
     border-radius: 2px;
-    color: var(--color-cream);
-    font-size: 15px;
-    font-weight: 500;
+    font: 700 14px/1 var(--font-sans);
+    letter-spacing: 0.02em;
     white-space: nowrap;
-    background: rgb(18 20 16 / 0.25);
-    transition: background-color 160ms var(--ease-out-expo), border-color 160ms var(--ease-out-expo), transform 120ms var(--ease-out-expo);
+    transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
   }
-  .btn > span { color: var(--color-muted); font-weight: 400; font-variant-numeric: tabular-nums; }
-  .btn:active { transform: translateY(1px); }
-  .btn-primario { background: var(--color-cream); color: var(--color-ink); border-color: var(--color-cream); }
-  .btn-primario > span { color: #5b5e55; }
-  /* Sobre o verde #66902C: botão em tinta escura. */
-  .btn-escuro { background: var(--color-ink); color: var(--color-cream); border-color: var(--color-ink); }
+  .btn-gold { background: var(--color-mustard); color: #1a1a12; }
+  .btn-dark { background: var(--color-g900); color: var(--color-cream); }
+  .btn-line { border: 1px solid rgb(244 237 225 / 0.55); color: var(--color-cream); }
+  /* A seta desliza 4 px no hover. */
+  .btn .seta { display: inline-block; transition: transform 200ms var(--ease-out); }
   @media (hover: hover) and (pointer: fine) {
-    .btn:hover { border-color: var(--color-cream); }
-    .btn-primario:hover { background: #fff; }
-    .btn-escuro:hover { background: var(--color-deep); border-color: var(--color-deep); }
-    .campo:hover, .opcao:hover { border-color: rgb(242 237 228 / 0.6); }
-    .link:hover { text-decoration-color: var(--color-cream); }
-    .btn-menu:hover { border-color: var(--color-cream); }
+    .btn-gold:hover { background: var(--color-mustard-2); }
+    .btn-dark:hover { background: var(--color-g800); }
+    .btn-line:hover { border-color: var(--color-cream); }
+    .btn:hover .seta { transform: translateX(4px); }
   }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  /* Foto com o tratamento da hero: quente e escura nas bordas, grão ~6%. */
-  .foto {
-    position: relative;
-    overflow: hidden;
-    background: var(--color-surface);
-    isolation: isolate;
-  }
-  .foto img { width: 100%; height: 100%; object-fit: cover; }
-  .foto::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 50% 45%, rgb(10 11 9 / 0) 55%, rgb(10 11 9 / 0.38) 100%),
-      linear-gradient(to top, rgb(10 11 9 / 0.35), rgb(10 11 9 / 0) 40%);
-  }
-  .foto::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: var(--grain);
-    opacity: 0.06;
-    mix-blend-mode: overlay;
-  }
-
-  .campo {
-    width: 100%;
-    height: 48px;
-    padding: 0 14px;
-    background: rgb(10 11 9 / 0.24);
-    border: 1px solid var(--color-line);
-    border-radius: 2px;
-    color: var(--color-cream);
-    font-size: 16px;
-    transition: border-color 0.2s ease;
-  }
-  .campo::placeholder { color: rgb(242 237 228 / 0.52); }
-  .campo:focus-visible { outline: none; border-color: var(--color-green); box-shadow: 0 0 0 3px rgb(102 144 44 / 0.35); }
-  .campo[aria-invalid="true"] { border-color: var(--color-erro); }
-
-
-  /* Hero: mídia e botões como no test/index.html. */
-  .hero-midia { object-position: 72% 50%; background: transparent; }
-  @media (max-aspect-ratio: 5/4) { .hero-midia { object-position: 50% 20%; } }
-  .btn-hero { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-  @media (max-width: 820px) { .btn-hero { height: 44px; padding: 0 16px; font-size: 14px; } }
-
-  /* H1 da hero: tamanho da maquete no desktop; abaixo de 820 px, até 3 linhas a 390 px. */
-  .hero-h1 { font-size: clamp(46px, 7.4vw, 112px); max-width: 15ch; }
-  @media (max-width: 820px) { .hero-h1 { font-size: clamp(34px, 9.6vw, 60px); max-width: 15ch; } }
+  .btn:active { transform: translateY(1px); }
 
   /* Botão compacto do menu no celular. */
   .btn-menu {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    height: 36px;
-    padding: 0 12px;
-    border: 1px solid var(--color-line);
+    height: 40px;
+    padding: 0 14px;
     border-radius: 2px;
-    color: var(--color-cream);
-    font-size: 14px;
-    font-weight: 500;
-    transition: border-color 160ms var(--ease-out-expo);
+    background: var(--color-mustard);
+    color: #1a1a12;
+    font: 700 13px/1 var(--font-sans);
+    letter-spacing: 0.02em;
   }
-  .btn-menu:active { transform: translateY(1px); }
 
-  /* Opção do formulário: rádio desenhado na mesma linguagem do campo. */
-  .opcao {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  /* Campos do formulário (sobre verde-escuro). */
+  .campo {
+    width: 100%;
     height: 48px;
     padding: 0 14px;
-    border: 1px solid var(--color-line);
+    background: transparent;
+    border: 1px solid rgb(244 237 225 / 0.3);
     border-radius: 2px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    color: var(--color-cream);
+    font: 500 16px/1 var(--font-sans);
+    transition: border-color 200ms ease;
   }
-  .opcao-ponto {
-    width: 14px;
-    height: 14px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    border: 1px solid var(--color-line);
+  select.campo {
+    appearance: none;
+    padding-right: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23F4EDE1' stroke-width='1.6'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 14px center;
   }
-  .opcao:has(input:checked) { border-color: var(--color-cream); background: rgb(242 237 228 / 0.06); }
-  .opcao:has(input:checked) .opcao-ponto { border-color: var(--color-cream); box-shadow: inset 0 0 0 3px var(--color-ink), inset 0 0 0 7px var(--color-cream); }
-  .opcao:has(input:focus-visible) { border-color: var(--color-green); box-shadow: 0 0 0 3px rgb(102 144 44 / 0.35); }
-
-  .link { text-decoration: underline; text-decoration-color: var(--color-line); text-underline-offset: 4px; transition: text-decoration-color 0.2s ease; }
-
-  /* Buffet em tela cheia: a foto cobre a seção inteira; o escuro é uma sombra localizada,
-     do tamanho do bloco de texto, como a sombra da palavra no vídeo da hero. */
-  .buffet-foto { object-position: 58% 60%; }
-  .buffet-sombra {
-    position: absolute;
-    z-index: -1;
-    inset: -42% -30% -36% -24%; /* relativo ao bloco de texto, que tem a largura do título */
-    pointer-events: none;
-    background: radial-gradient(closest-side, rgb(10 11 9 / 0.88) 0%, rgb(10 11 9 / 0.8) 50%, rgb(10 11 9 / 0.38) 78%, rgb(10 11 9 / 0) 100%);
-  }
-  .buffet-palco::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: var(--grain);
-    opacity: 0.06;
-    mix-blend-mode: overlay;
-  }
-  @media (max-aspect-ratio: 1/1) {
-    .buffet-foto { object-position: 28% 74%; }
-    .buffet-sombra { inset: -40% -20% -30% -20%; }
-  }
-  /* A câmera respira ao entrar, como o push-in da hero. */
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .buffet-foto {
-        animation: buffet-push linear both;
-        animation-timeline: view();
-        animation-range: entry 0% cover 55%;
-      }
-    }
-  }
-
-  /* Mapa do Google escurecido para a paleta. */
-  .mapa iframe { filter: invert(0.9) hue-rotate(180deg) saturate(0.55) brightness(0.95) contrast(0.9); }
-
+  select.campo option { color: var(--color-ink); background: var(--color-cream); }
+  .campo:focus-visible { outline: none; border-color: var(--color-mustard-2); box-shadow: 0 0 0 3px rgb(210 162 62 / 0.3); }
+  .campo[aria-invalid="true"] { border-color: var(--color-erro); }
   input[type="number"]::-webkit-inner-spin-button { opacity: 0.4; }
 
-  /* Revelação ao rolar: só quando o JS marca o elemento como fora da tela. */
-  [data-reveal="hidden"] { opacity: 0; transform: translateY(12px); }
+  /* Mapa levemente dessaturado para a paleta. */
+  .mapa iframe { filter: saturate(0.8); }
+
+  /* ---------- Animações: só transform, opacity e clip-path ---------- */
+
+  /* Hero: a foto entra com zoom lento. */
+  .hero-foto { animation: hero-zoom 1.6s var(--ease-out) both; transform-origin: 50% 50%; }
+
+  /* Título da hero: cada palavra sobe de dentro da própria linha. */
+  .palavra { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+  .palavra > span {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    animation: palavra-sobe 500ms var(--ease-out) both;
+    animation-delay: calc(var(--i) * 60ms + 200ms);
+  }
+  /* O que vem depois do título. */
+  .hero-depois { opacity: 0; animation: sobe-fade 600ms var(--ease-out) both; animation-delay: var(--atraso, 900ms); }
+
+  /* Revelação ao rolar. O JS só esconde o que ainda está abaixo da tela. */
+  [data-reveal="hidden"] { opacity: 0; transform: translateY(var(--sobe, 16px)); }
   [data-reveal="shown"] {
     opacity: 1;
     transform: none;
-    transition: opacity 400ms var(--ease-out-expo), transform 400ms var(--ease-out-expo);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 100ms);
   }
-  /* Movimento reduzido: menos e mais suave, não zero. Fica a opacidade, sai o deslocamento. */
+  /* Faixa de três blocos: sobe 24 px, um por vez. */
+  .feat[data-reveal] { --sobe: 24px; }
+
+  /* Galeria: a máscara abre de baixo para cima; no hover a foto dá um zoom de 1,04. */
+  .mascara[data-reveal="hidden"] { opacity: 1; transform: none; clip-path: inset(100% 0 0 0); }
+  .mascara[data-reveal="shown"] {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 700ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 120ms);
+  }
+  .mascara img { transition: transform 700ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .mascara:hover img { transform: scale(1.04); }
+  }
+
+  /* Foto do salão: parallax de 40 px ao longo da seção, só com CSS. */
+  .parallax { position: absolute; inset: -20px 0; height: calc(100% + 40px); width: 100%; object-fit: cover; }
+  @supports (animation-timeline: view()) {
+    .parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    [data-reveal] { transform: none !important; }
-    [data-reveal="shown"] { transition: opacity 300ms ease-out; }
-    .btn, .btn-menu, .campo, .opcao, .link { transition: none; }
+    .hero-foto, .palavra > span, .hero-depois, .parallax { animation: none; }
+    .palavra > span { transform: none; opacity: 1; }
+    .hero-depois { opacity: 1; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+    .btn, .btn .seta, .mascara img, .campo { transition: none; }
     .btn:active { transform: none; }
   }
 }
 
-@keyframes buffet-push {
-  from { transform: scale(1.08); }
-  to { transform: scale(1); }
-}
+@keyframes hero-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes palavra-sobe { to { transform: none; opacity: 1; } }
+@keyframes sobe-fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes parallax { from { transform: translateY(-20px); } to { transform: translateY(20px); } }

@@ -51,76 +51,59 @@ export function FormOrcamento() {
 
   const limpa = (c: Campo) => erros[c] && setErros(({ [c]: _, ...resto }) => resto);
 
+  const erro = (c: Campo) =>
+    erros[c] ? (
+      <span id={`${id}-${c}`} className="block text-[13px] text-erro">
+        {erros[c]}
+      </span>
+    ) : null;
+
+  const aria = (c: Campo) => ({
+    "aria-invalid": erros[c] ? true : undefined,
+    "aria-describedby": erros[c] ? `${id}-${c}` : undefined,
+    onChange: () => limpa(c),
+  });
+
   const texto = (c: "empresa" | "nome", rotulo: string, autoComplete: string) => (
-    <label className="block">
-      <span className="mb-2 block text-sm font-medium">{rotulo}</span>
-      <input
-        name={c}
-        className="campo"
-        autoComplete={autoComplete}
-        aria-invalid={erros[c] ? true : undefined}
-        aria-describedby={erros[c] ? `${id}-${c}` : undefined}
-        onChange={() => limpa(c)}
-      />
-      {erros[c] && (
-        <span id={`${id}-${c}`} className="mt-2 block text-sm text-erro">
-          {erros[c]}
-        </span>
-      )}
+    <label className="grid gap-2 text-[13px] font-semibold text-cream/85">
+      {rotulo}
+      <input name={c} className="campo" autoComplete={autoComplete} {...aria(c)} />
+      {erro(c)}
     </label>
   );
 
   return (
-    <form ref={form} onSubmit={enviar} noValidate className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        {texto("empresa", "Nome da empresa", "organization")}
+    <form ref={form} onSubmit={enviar} noValidate className="grid gap-4 rounded-[2px] bg-g900 p-6 sm:p-[34px]">
+      <h3 className="mb-1 text-[26px] leading-[1.1]">Peça um orçamento</h3>
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        {texto("empresa", "Empresa", "organization")}
         {texto("nome", "Seu nome", "name")}
       </div>
-
-      <label className="block sm:max-w-[calc(50%-10px)]">
-        <span className="mb-2 block text-sm font-medium">Número de pessoas</span>
-        <input
-          name="pessoas"
-          type="number"
-          inputMode="numeric"
-          min={1}
-          step={1}
-          className="campo tabular-nums"
-          aria-invalid={erros.pessoas ? true : undefined}
-          aria-describedby={erros.pessoas ? `${id}-pessoas` : undefined}
-          onChange={() => limpa("pessoas")}
-        />
-        {erros.pessoas && (
-          <span id={`${id}-pessoas`} className="mt-2 block text-sm text-erro">
-            {erros.pessoas}
-          </span>
-        )}
-      </label>
-
-      <fieldset aria-describedby={erros.opcao ? `${id}-opcao` : undefined}>
-        <legend className="mb-2 text-sm font-medium">Como a equipe vai almoçar</legend>
-        <div className="grid gap-2 sm:grid-cols-3">
-          {OPCOES.map((o) => (
-            <label key={o.valor} className="opcao">
-              <input type="radio" name="opcao" value={o.valor} className="sr-only" onChange={() => limpa("opcao")} />
-              <span aria-hidden="true" className="opcao-ponto" />
-              {o.rotulo}
-            </label>
-          ))}
-        </div>
-        {erros.opcao && (
-          <span id={`${id}-opcao`} className="mt-2 block text-sm text-erro">
-            {erros.opcao}
-          </span>
-        )}
-      </fieldset>
-
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
-        <button type="submit" className="btn btn-primario">
-          Pedir orçamento
-        </button>
-        <p className="text-[13px] text-muted">Abre o WhatsApp com a mensagem pronta.</p>
+      <div className="grid gap-3.5 sm:grid-cols-2">
+        <label className="grid gap-2 text-[13px] font-semibold text-cream/85">
+          Número de pessoas
+          <input name="pessoas" type="number" inputMode="numeric" min={1} step={1} className="campo tabular-nums" {...aria("pessoas")} />
+          {erro("pessoas")}
+        </label>
+        <label className="grid gap-2 text-[13px] font-semibold text-cream/85">
+          Como vão almoçar
+          <select name="opcao" className="campo" defaultValue="" {...aria("opcao")}>
+            <option value="" disabled>
+              Escolha
+            </option>
+            {OPCOES.map((o) => (
+              <option key={o.valor} value={o.valor}>
+                {o.rotulo}
+              </option>
+            ))}
+          </select>
+          {erro("opcao")}
+        </label>
       </div>
+      <button type="submit" className="btn btn-gold mt-1.5 border-0">
+        Enviar pelo WhatsApp
+      </button>
+      <p className="text-[13px] text-cream-soft">Abre o WhatsApp com a mensagem pronta.</p>
     </form>
   );
 }

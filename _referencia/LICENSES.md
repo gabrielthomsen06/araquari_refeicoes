@@ -1,11 +1,24 @@
 # Mídia de banco: licenças e origem
 
-Baixada em 13/11/2026. Todos os arquivos de banco são de licença livre (Pexels License ou Unsplash License): uso comercial permitido, sem atribuição obrigatória, edição permitida. Não é permitido revender o arquivo sem alteração, nem sugerir que as pessoas filmadas endossam a marca.
+Todos os arquivos de banco são de licença livre (Pexels License ou Unsplash License): uso comercial permitido, sem atribuição obrigatória, edição permitida. Não é permitido revender o arquivo sem alteração, nem sugerir que as pessoas fotografadas endossam a marca.
 
 - Pexels License: https://www.pexels.com/license/
 - Unsplash License: https://unsplash.com/license
 
-## Usados no vídeo da hero (rev. 2)
+## Em uso no site (v2, 15/11/2026) — todas PROVISÓRIAS até chegarem as fotos reais
+
+| Onde | Arquivo em `assets-src/banco/` | Autor | Página |
+|---|---|---|---|
+| Hero (e `og.jpg`) | `unsplash-1653681472495-prato-feijao.jpg` | Unsplash | https://unsplash.com/photos/1653681472495-0a62d97e37fb (foto da maquete) |
+| Galeria: "Arroz, feijão e ovo frito" | `pexels-34130182-pf-bife-ovo.jpg` | Fernanda da Silva Lopes | https://www.pexels.com/photo/traditional-brazilian-dish-with-steak-and-egg-34130182/ |
+| Galeria: "Macarrão com carne moída" | `unsplash-1622973536968-macarrao.jpg` | Unsplash | https://unsplash.com/photos/1622973536968-3ead9e780960 (foto da maquete) |
+| Galeria: "Marmitex" | `unsplash-1779939855722-marmitex-provisoria.jpg` | Bunly Hort | https://unsplash.com/photos/FhvW9wODr6g (marmitex de alumínio; a comida não é brasileira) |
+
+Fotos reais (Instagram do restaurante, em `assets-src/`): `post3-slide1.jpg` (buffet com salão), `post3-slide2.jpg` (fachada), `post3-slide3.jpg` (salão vazio, usada em "Nossa casa"), `post-ossobuco.jpg` (360×640, com texto gravado; não usada).
+
+## Histórico: vídeo da hero (removido em 15/11/2026)
+
+### Usados no vídeo da hero (rev. 2)
 
 | Plano | Palavra | Arquivo | Autor | Página | Arquivo original |
 |---|---|---|---|---|---|

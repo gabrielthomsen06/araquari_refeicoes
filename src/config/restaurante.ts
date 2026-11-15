@@ -9,6 +9,7 @@ export const restaurante = {
     local: "Condomínio Industrial BHW",
     localCurto: "Condomínio BHW",
     referencia: "BR-101, saída km 59",
+    referenciaCurta: "BR-101, km 59",
     cidade: "Araquari",
     uf: "SC",
   },
@@ -16,6 +17,8 @@ export const restaurante = {
   diasAbertos: [1, 2, 3, 4, 5], // CONFIRMAR com o cliente (0 = domingo)
   precos: { buffet: 23, marmita: 20 },
   anosDeAtuacao: "mais de 10",
+  fundacao: 2015, // CONFIRMAR com o cliente (texto da maquete: "Desde 2015")
+  estacionamento: "Na frente do salão",
 };
 
 // Busca usada no mapa incorporado: o pin do próprio restaurante no Google Maps.

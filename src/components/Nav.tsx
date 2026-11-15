@@ -1,48 +1,45 @@
-"use client";
-
 import Image from "next/image";
 import { restaurante } from "@/config/restaurante";
 import { MENSAGEM_MARMITA, whatsappLink } from "@/lib/restaurante";
 import { IconeWhatsApp } from "./IconeWhatsApp";
-import { useForaDaHero } from "./useForaDaHero";
 
-/** Transparente sobre a hero; sólida com blur depois que ela sai da tela. */
+const LINKS = [
+  ["#buffet", "Buffet"],
+  ["#empresas", "Empresas"],
+  ["#como-chegar", "Como chegar"],
+] as const;
+
+/** Menu sobre a hero: logo, três âncoras e o botão do WhatsApp. No celular, só logo e "Pedir". */
 export function Nav() {
-  const solida = useForaDaHero();
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-[background-color,padding,border-color] duration-300 motion-reduce:transition-none ${
-        solida
-          ? "border-b border-hair bg-verde-escuro/90 py-3 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent py-7"
-      }`}
-    >
-      <nav aria-label="Principal" className="flex items-center justify-between px-[var(--pad)] text-sm">
-        <a href="#topo" className="flex items-center gap-3 font-semibold tracking-[0.02em] text-cream">
+    <header className="absolute inset-x-0 top-0 z-20 text-cream">
+      <nav aria-label="Principal" className="wrap flex h-[88px] items-center justify-between gap-4">
+        <a href="#topo" className="flex items-center gap-3 text-[15px] font-bold">
           <Image src="/brand/logo-verde-144.webp" alt="" width={44} height={44} priority className="rounded-full" />
           {restaurante.nome}
         </a>
-        <ul className="hidden items-center gap-8 text-muted min-[821px]:flex">
-          <li><a className="transition-colors hover:text-cream" href="#buffet">Buffet</a></li>
-          <li><a className="transition-colors hover:text-cream" href="#marmitas">Marmitas</a></li>
-          <li><a className="transition-colors hover:text-cream" href="#empresas">Empresas</a></li>
-          <li>
-            <a
-              className="border-b border-line pb-[3px] text-cream transition-colors hover:border-cream"
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-          </li>
+        <ul className="hidden gap-8 text-sm font-semibold uppercase tracking-[0.04em] min-[901px]:flex">
+          {LINKS.map(([href, rotulo]) => (
+            <li key={href}>
+              <a className="opacity-85 transition-opacity hover:opacity-100" href={href}>
+                {rotulo}
+              </a>
+            </li>
+          ))}
         </ul>
         <a
-          id="pedir-menu"
+          className="btn btn-gold hidden min-[901px]:inline-flex"
           href={whatsappLink(MENSAGEM_MARMITA)}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-menu min-[821px]:hidden"
+        >
+          Pedir pelo WhatsApp
+        </a>
+        <a
+          className="btn-menu min-[901px]:hidden"
+          href={whatsappLink(MENSAGEM_MARMITA)}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <IconeWhatsApp className="size-4" />
           Pedir

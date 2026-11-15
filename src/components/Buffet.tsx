@@ -1,59 +1,61 @@
-import { getImageProps } from "next/image";
+import type { CSSProperties } from "react";
 import { restaurante } from "@/config/restaurante";
-import { MENSAGEM_MARMITA, horarioTexto, preco, whatsappLink } from "@/lib/restaurante";
+import { MENSAGEM_MARMITA, preco, whatsappLink } from "@/lib/restaurante";
 
-// Só fotos reais do restaurante nesta seção: o visitante entende que é o lugar.
-// O buffet em tela cheia é o momento da página depois da hero, e a única foto da seção.
+// Fotos de banco provisórias até chegarem as fotos reais (ver _referencia/LICENSES.md).
+const fotos = [
+  { nome: "pf", legenda: "Arroz, feijão e ovo frito", alt: "Prato com arroz, feijão, bife, couve, batata frita e ovo frito" },
+  { nome: "macarrao", legenda: "Macarrão com carne moída", alt: "Prato de macarrão com molho de carne moída" },
+  { nome: "marmitex", legenda: "Marmitex", alt: "Marmitex de alumínio" },
+];
+
+/** Galeria para abrir o apetite: o cliente monta o próprio prato, então nenhuma foto tem preço. */
 export function Buffet() {
-  const comum = { alt: "", sizes: "100vw", loading: "lazy" } as const;
-  const { props: largo } = getImageProps({ ...comum, src: "/fotos/buffet-largo-1086.webp", width: 1086, height: 640 });
-  const {
-    props: { srcSet: retrato },
-  } = getImageProps({ ...comum, src: "/fotos/buffet-salao-1086.webp", width: 1086, height: 1448 });
-
   return (
-    <>
-      <section id="buffet" aria-labelledby="buffet-titulo" className="relative isolate overflow-hidden bg-ink">
-        <div className="buffet-palco relative h-[min(80svh,700px)] min-h-[560px] sm:h-[min(100svh,880px)] sm:min-h-[620px]">
-          <picture>
-            <source media="(max-aspect-ratio: 1/1)" srcSet={retrato} />
-            <img
-              {...largo}
-              alt="O balcão do buffet da Araquari Refeições, com as cubas de comida e o salão ao fundo"
-              className="buffet-foto absolute inset-0 -z-20 size-full object-cover"
-            />
-          </picture>
-
-          <div className="absolute inset-x-[var(--pad)] bottom-[clamp(32px,7vh,72px)] mx-auto max-w-[1328px]" data-reveal>
-            <div className="relative w-fit">
-              <div aria-hidden="true" className="buffet-sombra" />
-              <h2
-                id="buffet-titulo"
-                className="font-serif text-[clamp(56px,7.6vw,108px)] leading-[0.95] tracking-[-0.02em] tabular-nums"
-              >
-                Buffet por {preco(restaurante.precos.buffet)}.
-              </h2>
-              <p className="mt-5 max-w-[34ch] text-lg leading-[1.55] text-cream">
-                Preço fixo, das {horarioTexto}. O salão é amplo e tem estacionamento na frente.
-              </p>
-            </div>
+    <section id="buffet" aria-labelledby="buffet-titulo" className="bg-paper py-24">
+      <div className="wrap">
+        <header className="mb-11 flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="eyebrow" data-reveal>
+              O buffet
+            </p>
+            <h2 id="buffet-titulo" className="h2" data-reveal>
+              Você monta o <em>prato</em>.
+            </h2>
+            <p className="mt-3 text-muted" data-reveal>
+              Buffet com preço fixo de {preco(restaurante.precos.buffet)}.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section id="marmitas" aria-labelledby="marmitas-titulo" className="bg-green px-[var(--pad)] text-ink">
-        <div
-          className="mx-auto flex max-w-[1328px] flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center md:py-14"
-          data-reveal
-        >
-          <h2 id="marmitas-titulo" className="font-serif text-[clamp(30px,3.4vw,46px)] leading-[1.05] tracking-[-0.01em]">
-            Prefere levar? <em>A marmita sai por {preco(restaurante.precos.marmita)}.</em>
-          </h2>
-          <a className="btn btn-escuro shrink-0" href={whatsappLink(MENSAGEM_MARMITA)} target="_blank" rel="noopener noreferrer">
-            Pedir marmita
+          <a className="btn btn-dark" href={whatsappLink(MENSAGEM_MARMITA)} target="_blank" rel="noopener noreferrer" data-reveal>
+            Pedir marmita pelo WhatsApp
           </a>
+        </header>
+
+        <div className="grid gap-5 md:grid-cols-[1.25fr_1fr] md:grid-rows-[1fr_1fr]">
+          {fotos.map((f, i) => (
+            <figure key={f.nome} className={i === 0 ? "md:row-span-2" : ""}>
+              <div
+                className={`mascara relative overflow-hidden rounded-[2px] bg-cream ${i === 0 ? "aspect-[4/3] md:aspect-[4/5]" : "aspect-[4/3] md:aspect-auto md:h-[calc(100%-44px)]"}`}
+                data-reveal
+                style={{ "--i": i } as CSSProperties}
+              >
+                <img
+                  src={`/fotos/${f.nome}-1200.webp`}
+                  srcSet={`/fotos/${f.nome}-800.webp 800w, /fotos/${f.nome}-1200.webp 1200w`}
+                  sizes={i === 0 ? "(min-width: 768px) 55vw, 100vw" : "(min-width: 768px) 40vw, 100vw"}
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  alt={f.alt}
+                  className="absolute inset-0 size-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 font-display text-[20px] leading-[1.2]">{f.legenda}</figcaption>
+            </figure>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

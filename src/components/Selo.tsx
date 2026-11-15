@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { horarioTexto, statusAgora } from "@/lib/restaurante";
 
 type Estado = ReturnType<typeof statusAgora> | null;
 
 /** Selo de funcionamento pelo horário de Brasília. Antes de hidratar mostra só o horário, sem afirmar nada. */
-export function Selo({ forcar, className = "" }: { forcar?: string; className?: string }) {
+export function Selo({ forcar, className = "", style }: { forcar?: string; className?: string; style?: CSSProperties }) {
   const [estado, setEstado] = useState<Estado>(null);
 
   useEffect(() => {
@@ -19,14 +19,17 @@ export function Selo({ forcar, className = "" }: { forcar?: string; className?: 
 
   const aberto = estado?.aberto ?? false;
   return (
-    <p className={`inline-flex items-center gap-2 text-[13px] text-muted ${className}`}>
+    <p
+      style={style}
+      className={`inline-flex items-center gap-2.5 rounded-[2px] border border-cream/25 bg-ink/35 px-3.5 py-2 text-[13px] font-semibold text-cream backdrop-blur-sm ${className}`}
+    >
       <span
         aria-hidden="true"
-        className={`size-[7px] shrink-0 rounded-full ${aberto ? "bg-green shadow-[0_0_0_4px_rgb(102_144_44/0.22)]" : "bg-muted"}`}
+        className={`size-2 shrink-0 rounded-full ${aberto ? "bg-brand shadow-[0_0_0_4px_rgb(102_144_44/0.3)]" : "bg-cream/55"}`}
       />
       {estado ? (
         <span>
-          <b className="font-medium text-cream">{estado.destaque}</b> · {estado.resto}
+          {estado.destaque} <span className="font-medium text-cream/80">· {estado.resto}</span>
         </span>
       ) : (
         <span>Almoço das {horarioTexto}</span>

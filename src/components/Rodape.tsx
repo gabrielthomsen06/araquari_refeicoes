@@ -2,39 +2,43 @@ import Image from "next/image";
 import { restaurante } from "@/config/restaurante";
 import { endereco, instagramUsuario, telefoneTexto, whatsappLink } from "@/lib/restaurante";
 
-export function Rodape() {
-  const ano = new Date().getFullYear();
-  return (
-    <footer className="border-t border-hair bg-deep px-[var(--pad)] pb-28 pt-16 md:pb-12">
-      <div className="mx-auto grid max-w-[1328px] gap-10 md:grid-cols-12 md:gap-x-8">
-        <div className="md:col-span-5">
-          <div className="flex items-center gap-4">
-            <Image src="/brand/logo-verde-192.webp" alt="" width={64} height={64} loading="lazy" className="rounded-full" />
-            <p className="font-serif text-[30px] leading-none">{restaurante.nome}</p>
-          </div>
-          <p className="mt-4 text-muted">Alimentação para empresas há {restaurante.anosDeAtuacao} anos.</p>
-        </div>
+const icone = "size-5 shrink-0 fill-none stroke-mustard-2 [stroke-width:1.6]";
 
-        <ul className="space-y-2 text-[15px] md:col-span-3">
-          <li>
-            <a className="link" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
-              WhatsApp {telefoneTexto()}
+export function Rodape() {
+  return (
+    <footer className="bg-g900 text-cream">
+      <div className="wrap flex flex-wrap items-center justify-between gap-6 py-[34px] text-sm">
+        <a href="#topo" className="flex items-center gap-3 text-[15px] font-bold">
+          <Image src="/brand/logo-verde-144.webp" alt="" width={44} height={44} loading="lazy" className="rounded-full" />
+          {restaurante.nome}
+        </a>
+        <ul className="flex flex-wrap gap-x-9 gap-y-3">
+          <li className="flex items-center gap-2.5">
+            <svg viewBox="0 0 20 20" className={icone} aria-hidden="true">
+              <path d="M4 3h3l2 4-2 1a9 9 0 0 0 5 5l1-2 4 2v3a2 2 0 0 1-2 2A15 15 0 0 1 2 5a2 2 0 0 1 2-2z" />
+            </svg>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="hover:underline">
+              {telefoneTexto()}
             </a>
           </li>
-          <li>
-            <a className="link" href={restaurante.instagram} target="_blank" rel="noopener noreferrer">
-              Instagram {instagramUsuario}
+          <li className="flex items-center gap-2.5">
+            <svg viewBox="0 0 20 20" className={icone} aria-hidden="true">
+              <rect x="3" y="3" width="14" height="14" rx="4" />
+              <circle cx="10" cy="10" r="3.2" />
+            </svg>
+            <a href={restaurante.instagram} target="_blank" rel="noopener noreferrer" className="hover:underline">
+              {instagramUsuario}
             </a>
+          </li>
+          <li className="flex items-center gap-2.5">
+            <svg viewBox="0 0 20 20" className={icone} aria-hidden="true">
+              <path d="M10 18s6-5.5 6-10a6 6 0 0 0-12 0c0 4.5 6 10 6 10z" />
+            </svg>
+            <address className="not-italic">
+              {endereco.referenciaCurta} · {endereco.cidadeUf}
+            </address>
           </li>
         </ul>
-
-        <address className="max-w-[40ch] text-[15px] not-italic leading-[1.7] text-muted md:col-span-4">{endereco.completo}</address>
-      </div>
-
-      <div className="mx-auto mt-14 flex max-w-[1328px] flex-col gap-3 border-t border-hair pt-6 text-[13px] text-muted md:flex-row md:justify-between">
-        <p>
-          © {ano} {restaurante.nome}
-        </p>
       </div>
     </footer>
   );

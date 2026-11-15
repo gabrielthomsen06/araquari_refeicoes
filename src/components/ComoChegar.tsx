@@ -1,57 +1,45 @@
-import Image from "next/image";
 import { mapaBusca, restaurante } from "@/config/restaurante";
 import { diasTexto, endereco, horarioTexto } from "@/lib/restaurante";
-import { Secao } from "./Secao";
 
 const mapaSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapaBusca)}&hl=pt-BR&z=15&output=embed`;
 
 export function ComoChegar() {
+  // "BR-101, saída km 59" → "BR-101, " + <em>saída km 59</em>
+  const [via, ...resto] = endereco.referencia.split(", ");
   return (
-    <Secao id="como-chegar" titulo={`${endereco.referencia}.`}>
-      <div className="mx-auto mt-12 grid max-w-[1328px] gap-y-10 md:mt-16 md:grid-cols-12 md:gap-x-8">
-        <div className="md:col-span-4" data-reveal>
-          <address className="max-w-[36ch] text-lg not-italic leading-[1.55]">{endereco.completo}</address>
-
-          <dl className="mt-8 border-t border-hair pt-5 text-[15px]">
-            <dt className="rotulo">Horário</dt>
-            <dd className="mt-2">
-              {diasTexto()} · {horarioTexto}
-            </dd>
-          </dl>
-
-          <a className="btn btn-primario mt-8" href={restaurante.mapsUrl} target="_blank" rel="noopener noreferrer">
-            Abrir no Google Maps
+    <section id="como-chegar" aria-labelledby="como-chegar-titulo" className="py-24">
+      <div className="wrap grid items-start gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
+        <div>
+          <p className="eyebrow" data-reveal>
+            Como chegar
+          </p>
+          <h2 id="como-chegar-titulo" className="h2" data-reveal>
+            {via}, <em>{resto.join(", ")}</em>.
+          </h2>
+          <address className="my-5 not-italic text-muted" data-reveal>
+            <strong className="mb-1 block font-display text-[22px] font-normal text-ink">{endereco.local}</strong>
+            {endereco.rua}, {endereco.bairro}
+            <br />
+            {endereco.cidadeUf}
+          </address>
+          <p className="mb-7 text-[15px]" data-reveal>
+            {diasTexto()} · {horarioTexto}
+          </p>
+          <a className="btn btn-dark" href={restaurante.mapsUrl} target="_blank" rel="noopener noreferrer" data-reveal>
+            Abrir no Google Maps <span className="seta" aria-hidden="true">→</span>
           </a>
         </div>
 
-        <div className="md:col-span-8 md:col-start-5 md:row-span-2 md:row-start-1" data-reveal>
-          <div className="mapa relative aspect-[4/3] overflow-hidden border border-hair bg-surface sm:aspect-[16/11]">
-            <iframe
-              src={mapaSrc}
-              title={`Mapa: ${restaurante.nome}, ${endereco.local}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 size-full border-0"
-            />
-          </div>
-        </div>
-
-        <div className="md:col-span-4 md:row-start-2 md:self-end" data-reveal>
-          <figure className="max-w-[360px]">
-            <div className="foto aspect-[4/3]">
-              <Image
-                src="/fotos/fachada-640.webp"
-                alt="Fachada do restaurante com o estacionamento na frente"
-                width={640}
-                height={853}
-                sizes="360px"
-                loading="lazy"
-                className="object-[50%_70%]"
-              />
-            </div>
-          </figure>
+        <div className="mapa aspect-[16/10] overflow-hidden rounded-[2px] bg-paper" data-reveal>
+          <iframe
+            src={mapaSrc}
+            title={`Mapa: ${restaurante.nome}, ${endereco.local}`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="size-full border-0"
+          />
         </div>
       </div>
-    </Secao>
+    </section>
   );
 }

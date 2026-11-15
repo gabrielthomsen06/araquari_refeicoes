@@ -35,6 +35,8 @@ export const endereco = {
   cidadeUf: `${e.cidade} (${e.uf})`,
   /** "R. Mariano Soares, Corveta · Condomínio Industrial BHW (BR-101, saída km 59), Araquari (SC)" */
   completo: `${e.rua}, ${e.bairro} · ${e.local} (${e.referencia}), ${e.cidade} (${e.uf})`,
+  /** "R. Mariano Soares, Corveta · Condomínio Industrial BHW, Araquari (SC)" */
+  linha: `${e.rua}, ${e.bairro} · ${e.local}, ${e.cidade} (${e.uf})`,
 };
 
 export function whatsappLink(mensagem?: string) {
