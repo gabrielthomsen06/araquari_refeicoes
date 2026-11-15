@@ -29,12 +29,14 @@ for (const w of [750, 1080]) {
 
 // ---- Fotos reais (Instagram do restaurante)
 for (const w of [720, 1080]) await webp("assets-src/post3-slide3.jpg", `salao-${w}`, { width: w, quality: 74 });
+// Buffet com as cubas: corte 3:2 do retrato 1086x1448, do balcão até as mesas.
+const buffetCorte = { left: 0, top: 500, width: 1086, height: 724 };
+for (const w of [800, 1086]) await webp("assets-src/post3-slide1.jpg", `buffet-${w}`, { width: w, extract: buffetCorte, quality: 76 });
 
 // ---- Galeria do buffet (banco, provisórias)
 const galeria = [
   ["assets-src/banco/pexels-34130182-pf-bife-ovo.jpg", "pf"],
   ["assets-src/banco/unsplash-1622973536968-macarrao.jpg", "macarrao"],
-  ["assets-src/banco/unsplash-1779939855722-marmitex-provisoria.jpg", "marmitex"],
 ];
 for (const [src, nome] of galeria) for (const w of [800, 1200]) await webp(src, `${nome}-${w}`, { width: w, quality: 74 });
 

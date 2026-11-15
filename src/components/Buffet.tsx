@@ -2,11 +2,12 @@ import type { CSSProperties } from "react";
 import { restaurante } from "@/config/restaurante";
 import { MENSAGEM_MARMITA, preco, whatsappLink } from "@/lib/restaurante";
 
-// Fotos de banco provisórias até chegarem as fotos reais (ver _referencia/LICENSES.md).
+// "pf" e "macarrao" são de banco, provisórias (ver _referencia/LICENSES.md); "buffet" é foto real do restaurante.
+// A marmitex entra na galeria quando chegar a foto real.
 const fotos = [
-  { nome: "pf", legenda: "Arroz, feijão e ovo frito", alt: "Prato com arroz, feijão, bife, couve, batata frita e ovo frito" },
-  { nome: "macarrao", legenda: "Macarrão com carne moída", alt: "Prato de macarrão com molho de carne moída" },
-  { nome: "marmitex", legenda: "Marmitex", alt: "Marmitex de alumínio" },
+  { nome: "pf", larguras: [800, 1200], legenda: "Bife, ovo e couve", alt: "Prato com arroz, bife, couve, batata frita e ovo frito" },
+  { nome: "macarrao", larguras: [800, 1200], legenda: "Macarrão com carne moída", alt: "Prato de macarrão com molho de carne moída" },
+  { nome: "buffet", larguras: [800, 1086], legenda: "O buffet", alt: "O balcão do buffet da Araquari Refeições, com as cubas de comida e o salão ao fundo" },
 ];
 
 /** Galeria para abrir o apetite: o cliente monta o próprio prato, então nenhuma foto tem preço. */
@@ -40,11 +41,11 @@ export function Buffet() {
                 style={{ "--i": i } as CSSProperties}
               >
                 <img
-                  src={`/fotos/${f.nome}-1200.webp`}
-                  srcSet={`/fotos/${f.nome}-800.webp 800w, /fotos/${f.nome}-1200.webp 1200w`}
+                  src={`/fotos/${f.nome}-${f.larguras[1]}.webp`}
+                  srcSet={f.larguras.map((w) => `/fotos/${f.nome}-${w}.webp ${w}w`).join(", ")}
                   sizes={i === 0 ? "(min-width: 768px) 55vw, 100vw" : "(min-width: 768px) 40vw, 100vw"}
-                  width={1200}
-                  height={800}
+                  width={f.larguras[1]}
+                  height={Math.round((f.larguras[1] * 2) / 3)}
                   loading="lazy"
                   decoding="async"
                   alt={f.alt}

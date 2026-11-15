@@ -89,7 +89,7 @@ export function FormOrcamento() {
           Como vão almoçar
           <select name="opcao" className="campo" defaultValue="" {...aria("opcao")}>
             <option value="" disabled>
-              Escolha
+              Selecione
             </option>
             {OPCOES.map((o) => (
               <option key={o.valor} value={o.valor}>

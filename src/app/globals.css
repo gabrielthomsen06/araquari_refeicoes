@@ -142,6 +142,21 @@
 
   /* ---------- Animações: só transform, opacity e clip-path ---------- */
 
+  /* Hero: degradê da maquete mais uma sombra elíptica no centro, onde fica o texto. */
+  .hero-sombra {
+    background:
+      radial-gradient(ellipse 46% 42% at 50% 56%, rgb(18 22 14 / 0.62), rgb(18 22 14 / 0) 100%),
+      linear-gradient(180deg, rgb(18 22 14 / 0.7), rgb(18 22 14 / 0.45) 45%, rgb(18 22 14 / 0.75));
+  }
+  /* No celular o texto ocupa quase toda a largura: elipse mais larga e um pouco mais escura. */
+  @media (max-width: 820px) {
+    .hero-sombra {
+      background:
+        radial-gradient(ellipse 85% 44% at 50% 54%, rgb(18 22 14 / 0.68), rgb(18 22 14 / 0) 100%),
+        linear-gradient(180deg, rgb(18 22 14 / 0.7), rgb(18 22 14 / 0.45) 45%, rgb(18 22 14 / 0.75));
+    }
+  }
+
   /* Hero: a foto entra com zoom lento. */
   .hero-foto { animation: hero-zoom 1.6s var(--ease-out) both; transform-origin: 50% 50%; }
 

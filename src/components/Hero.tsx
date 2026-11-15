@@ -59,7 +59,7 @@ export function Hero() {
       </picture>
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(18_22_14/0.70),rgb(18_22_14/0.45)_45%,rgb(18_22_14/0.75))]"
+        className="hero-sombra absolute inset-0 -z-10"
       />
 
       <Nav />
